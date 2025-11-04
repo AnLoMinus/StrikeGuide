@@ -1,0 +1,27 @@
+{
+  "name": "strikeguide",
+  "version": "1.0.0",
+  "description": "StrikeGuide - מאגר תיקוני מכות רוחניות / Spiritual Correction Strike Repository",
+  "main": "README.md",
+  "scripts": {
+    "install": "cd UI && npm install",
+    "dev": "cd UI && npm run dev",
+    "build": "cd UI && npm run build",
+    "preview": "cd UI && npm run preview"
+  },
+  "keywords": [
+    "spiritual",
+    "correction",
+    "tikun",
+    "judgement",
+    "strike",
+    "guide"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
+

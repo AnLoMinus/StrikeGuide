@@ -126,10 +126,20 @@
 
 ---
 
-## שלב הבא — מה אני מארגן בשבילך 🛠️🚀
+## קישורים / Links 🚀
 
-* אכין עבורך: **1)** `README.md` מלא לפי התבנית; **2)** טמפלט קלט (`TEMPLATES/entry_template.md`); **3)** דוגמת `entries.csv` עם 5 רשומות מדומות ורמות יראה שונות; **4)** מבנה ראשוני ל־`DOCS/corrections.md`.
-  (רוצה שאכין את ארבעת הקבצים האלה עכשיו כפריסה מוכנה להעתקה ל־GitHub?)
+* **מאגר GitHub:** [https://github.com/AnLoMinus/StrikeGuide](https://github.com/AnLoMinus/StrikeGuide)
+* **אתר GitHub Pages:** [https://anlominus.github.io/StrikeGuide/](https://anlominus.github.io/StrikeGuide/)
+* **RepoCraft:** [https://github.com/AnLoMinus/RepoCraft](https://github.com/AnLoMinus/RepoCraft)
+
+## קבצים חשובים / Important Files
+
+* **LICENSE** - רישיון (מקושר ל-RepoCraft)
+* **CONTRIBUTING.md** - הנחיות תרומה (מקושר ל-RepoCraft)
+* **CODE_OF_CONDUCT.md** - קוד התנהגות (מקושר ל-RepoCraft)
+* **SECURITY.md** - מדיניות אבטחה (מקושר ל-RepoCraft)
+* **CONDUCT.md** - קוד התנהגות ספציפי
+* **ETHICS.md** - מדיניות אתיקה
 
 ---
 

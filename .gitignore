@@ -1,0 +1,99 @@
+# Dependencies - תלויות
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs - קבצים בנויים
+dist/
+build/
+**/dist/
+**/build/
+*.log
+
+# אבל dist/ בתיקייה הראשית נדרש ל-GitHub Pages
+# But dist/ in root is needed for GitHub Pages
+!dist/.gitkeep
+
+# IDE - סביבת פיתוח
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS - קבצי מערכת הפעלה
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Environment - משתני סביבה
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Vite - קבצי Vite
+.vite/
+vite.config.js.timestamp-*
+
+# Cache - קבצי מטמון
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.turbo/
+
+# Testing - קבצי בדיקות
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files - קבצים זמניים
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Archives - ארכיונים (לא נשמרים במאגר)
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z
+
+# Logs - קבצי לוג
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Editor directories and files - עורכי קוד
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Obsidian - קבצי Obsidian (אם קיימים)
+.obsidian/
+

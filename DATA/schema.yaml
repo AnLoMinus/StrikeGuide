@@ -1,0 +1,123 @@
+# סכמת נתונים - StrikeGuide (SG)
+# Schema for StrikeGuide Repository
+
+schema_version: "1.0.0"
+repository_name: "StrikeGuide"
+repository_code: "SG"
+
+# שדות בכל רשומה / Fields in each entry
+fields:
+  - name: id
+    type: string
+    required: true
+    format: "SG-####"
+    description: "מספר סידורי ייחודי / Unique serial number"
+    example: "SG-0001"
+    
+  - name: name
+    type: string
+    required: true
+    description: "כינוי הרוח / Spirit name or nickname"
+    example: "רוח ההסתרה"
+    
+  - name: manifestation
+    type: string
+    required: true
+    description: "מופעים - תיאור ההתנהגויות שהרוח מפעילה / Manifestations - behaviors the spirit activates"
+    example: "השתקפויות של פחד/עכבות, חוסר אונים, חלומות מטרידים"
+    
+  - name: trigger
+    type: string
+    required: true
+    description: "טריגר - פעולות אנושיות שגורמות לה להגיב / Trigger - human actions that cause response"
+    example: "ניתוק מעשיית מצווה, כעס גלוי, גאווה"
+    
+  - name: yirat_shamayim_level
+    type: integer
+    required: true
+    min: 1
+    max: 5
+    description: "דרגת יראת שמים (1-5) / Yirat Shamayim Level (1-5)"
+    criteria:
+      level_1: "יראת שמים גבוהה מאוד - קיום מצוות קפדני, תפילה קבועה, לימוד תורה יומי"
+      level_2: "יראת שמים בינונית - קיום מצוות חלקי, חוסר עקביות"
+      level_3: "יראת שמים נמוכה - קיום מצוות מזדמן, חוסר מודעות"
+      level_4: "יראת שמים נמוכה מאוד - ניתוק כמעט מוחלט, כפירה גלויה"
+      level_5: "אין יראת שמים - ניתוק מלא, חילול שבת/חגים, כפירה פעילה"
+    example: 2
+    
+  - name: predicted_makkah
+    type: string
+    required: true
+    description: "המכה הצפויה - תיאור סוג ההשלכה / Predicted Makkah - type of consequence"
+    example: "מבחן של אובדן זמן/בריאות זמני, תחושת נידוי"
+    
+  - name: severity
+    type: integer
+    required: true
+    min: 1
+    max: 10
+    description: "חומרה (1-10) / Severity (1-10)"
+    scale:
+      1-3: "מינור / Minor"
+      4-6: "בינוני / Moderate"
+      7-8: "חמור / Severe"
+      9-10: "קריטי / Critical"
+    example: 4
+    
+  - name: reason
+    type: string
+    required: true
+    description: "שורש ההשלכה - הסבר רוחני / Reason - spiritual explanation"
+    example: "נשארה חסימה רוחנית שלא תוקנה; צורך בחזרה בתשובה ובמעשה חסד"
+    
+  - name: corrective_actions
+    type: string
+    required: true
+    description: "דרכי תיקון - צעדים מעשיים / Corrective Actions - practical steps"
+    example: "עשיית תשובה פרקטית; לימוד מסכת אבות פרקים נבחרים; מעשה חסד יומי; בקשת רב מנוסה להכוונה"
+    
+  - name: timestamp_gregorian
+    type: string
+    required: true
+    format: "YYYY-MM-DD HH:MM:SS"
+    description: "תאריך לועזי / Gregorian date and time"
+    example: "2025-11-04 02:43:20"
+    
+  - name: timestamp_hebrew
+    type: string
+    required: true
+    description: "תאריך עברי / Hebrew date"
+    example: "י״ג בְּחֶשְׁוָן תשפ״ו"
+    
+  - name: status
+    type: string
+    required: true
+    enum:
+      - "הולך לקרות / Pending"
+      - "בתהליך תיקון / In Correction"
+      - "בוטל / Cancelled"
+      - "עודכן / Updated"
+      - "הושלם / Completed"
+    description: "סטטוס הרשומה / Entry status"
+    example: "בתהליך תיקון / In Correction"
+    
+  - name: notes
+    type: string
+    required: false
+    description: "הערות נוספות - קישורים, עדויות, רפרנסים / Additional notes - links, testimonies, references"
+    example: "ראו DOCS/corrections.md לפרקטיקות מפורטות"
+
+# כללי תקינות / Validation rules
+validation:
+  - id_must_be_unique: true
+  - yirat_shamayim_level_range: [1, 5]
+  - severity_range: [1, 10]
+  - timestamp_format: "YYYY-MM-DD HH:MM:SS"
+  - required_fields: ["id", "name", "manifestation", "trigger", "yirat_shamayim_level", "predicted_makkah", "severity", "reason", "corrective_actions", "timestamp_gregorian", "timestamp_hebrew", "status"]
+
+# קישורים למקורות / Source links
+references:
+  date_converter: "https://www.hebcal.com/converter"
+  chabad_calendar: "https://www.chabad.org/calendar"
+
