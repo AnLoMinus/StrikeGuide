@@ -2,15 +2,154 @@
 <html lang="he" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StrikeGuide - מאגר תיקוני מכות רוחניות</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="root"></div>
-    <script type="module" src="./UI/src/main.jsx"></script>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">🔥⚖️ StrikeGuide - מאגר תיקוני מכות רוחניות</h1>
+            <p class="header-subtitle">מיפוי, ניתוח והכוונה לתיקון</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Buttons -->
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn btn-primary" onclick="showNewEntryForm()">➕ רשומה חדשה</button>
+            <button class="btn btn-secondary" onclick="loadSampleEntries()" id="loadSamplesBtn"
+                style="display: none;">📋 טען דוגמאות</button>
+            <button class="btn btn-secondary" onclick="exportToCSV()" id="exportBtn" style="display: none;">📥 ייצוא
+                ל-CSV</button>
+            <button class="btn btn-secondary" onclick="showEntryList()" id="listBtn" style="display: none;">📋 רשימת
+                רשומות</button>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="card welcome-card">
+                <div class="welcome-content">
+                    <h2 class="welcome-title">ברוכים הבאים ל-StrikeGuide! 🙏</h2>
+                    <p class="welcome-text">מאגר תיקוני מכות רוחניות - מיפוי, ניתוח והכוונה לתיקון</p>
+                </div>
+                <div class="welcome-info">
+                    <h3 class="info-title">מה זה StrikeGuide?</h3>
+                    <p class="info-text">מאגר זה מיועד לרשום, להבהיר ולתקשר את ה"מכות" (ההשלכות/התוצאות/תיקונים)
+                        שעלולות לבוא על ישות/רוח/נפש לפי מידת יראת־שמיים והתנהגות רוחנית.</p>
+                    <p class="info-text">מטרת המאגר היא לשקף אמת, להניע תיקון ולתת מפת דרכים מעשית לשינוי.</p>
+                </div>
+                <div class="welcome-actions">
+                    <button class="btn btn-primary btn-large" onclick="showNewEntryForm()">➕ צור רשומה חדשה</button>
+                    <button class="btn btn-secondary btn-large" onclick="loadSampleEntries()">📋 טען דוגמאות</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Entry Form -->
+        <div id="entryForm" class="entry-form-container" style="display: none;">
+            <div class="card form-card">
+                <h2 class="form-title" id="formTitle">רשומה חדשה</h2>
+                <form id="entryFormElement" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Name / כינוי הרוח *</label>
+                        <input type="text" name="name" class="input-field" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Manifestation / מופעים *</label>
+                        <textarea name="manifestation" class="input-field" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Trigger / טריגר *</label>
+                        <textarea name="trigger" class="input-field" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Yirat Shamayim Level / דרגת יראת שמים (1-5) *</label>
+                            <input type="number" name="yirat_shamayim_level" class="input-field" min="1" max="5"
+                                value="2" required>
+                            <button type="button" class="btn-link" onclick="analyzeMakkah()">🔍 ניתוח אוטומטי</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Severity / חומרה (1-10) *</label>
+                            <input type="number" name="severity" class="input-field" min="1" max="10" value="4"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Predicted Makkah / המכה הצפויה *</label>
+                        <textarea name="predicted_makkah" class="input-field" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Reason / שורש ההשלכה *</label>
+                        <textarea name="reason" class="input-field" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Corrective Actions / דרכי תיקון *</label>
+                        <textarea name="corrective_actions" class="input-field" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Status / סטטוס *</label>
+                        <select name="status" class="input-field" required>
+                            <option value="הולך לקרות / Pending">הולך לקרות / Pending</option>
+                            <option value="בתהליך תיקון / In Correction">בתהליך תיקון / In Correction</option>
+                            <option value="בוטל / Cancelled">בוטל / Cancelled</option>
+                            <option value="עודכן / Updated">עודכן / Updated</option>
+                            <option value="הושלם / Completed">הושלם / Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Notes / הערות נוספות</label>
+                        <textarea name="notes" class="input-field" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="cancelForm()">ביטול</button>
+                        <button type="submit" class="btn btn-primary">שמירה</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div id="statistics" style="display: none;"></div>
+
+        <!-- Entry List -->
+        <div id="entryList" style="display: none;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">"רֵאשִׁית חָכְמָה יִרְאַת ה'." 🙏</p>
+            <p class="footer-links">
+                ראו <a href="https://raw.githubusercontent.com/AnLoMinus/StrikeGuide/main/CONDUCT.md" target="_blank"
+                    rel="noopener noreferrer">CONDUCT.md</a> ו-<a
+                    href="https://raw.githubusercontent.com/AnLoMinus/StrikeGuide/main/ETHICS.md" target="_blank"
+                    rel="noopener noreferrer">ETHICS.md</a> לכללי שימוש
+                | <a href="https://github.com/AnLoMinus/StrikeGuide" target="_blank" rel="noopener noreferrer">📦 מאגר
+                    GitHub</a>
+                | <a href="https://anlominus.github.io/StrikeGuide/" target="_blank" rel="noopener noreferrer">🌐
+                    אתר</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
